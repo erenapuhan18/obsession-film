@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OBSESSION (2026) — Dikkatli dile.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:ital,wght@0,400;0,600;0,800;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gece:#0c0f0c;
+  --panel:#151a15;
+  --cizgi:#242b24;
+  --sogut:#7d9b74;
+  --pembe:#ff5e7e;
+  --pembe-koyu:#c93a56;
+  --kemik:#e9e4d6;
+  --sis:#9aa294;
+  --display:'Anton',sans-serif;
+  --govde:'Figtree',sans-serif;
+  --elyazi:'Caveat',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--gece)}
+body{
+  background:var(--gece);color:var(--kemik);
+  font-family:var(--govde);font-size:17px;line-height:1.75;
+  overflow-x:hidden;
+}
+::selection{background:var(--pembe);color:var(--gece)}
+a{color:var(--pembe)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--pembe);outline-offset:3px}
+
+.icerik{max-width:760px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--govde);font-weight:800;font-size:10px;letter-spacing:.36em;color:var(--sogut)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.bolum{padding:88px 0 0}
+.bolum-baslik{font-family:var(--display);font-weight:400;font-size:clamp(34px,7vw,58px);line-height:1.05;letter-spacing:.02em;margin:12px 0 26px;color:var(--kemik)}
+.bolum-baslik em{font-style:normal;color:var(--pembe)}
+.bolum p{color:#c3bfb2;margin-bottom:18px;max-width:640px}
+.bolum p strong{color:var(--kemik)}
+
+/* ---------- hero ---------- */
+#giris{min-height:100vh;position:relative;display:flex;align-items:flex-end;overflow:hidden;padding:0 0 72px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 25%;filter:saturate(1.05) contrast(1.05) brightness(.75)}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom, rgba(12,15,12,.5) 0%, rgba(12,15,12,.15) 40%, var(--gece) 96%);
+}
+.hero-ic{position:relative;z-index:2;max-width:1060px;margin:0 auto;width:100%;padding:0 24px}
+.hero-baslik{
+  font-family:var(--display);font-weight:400;line-height:.92;
+  font-size:clamp(64px,13.5vw,168px);letter-spacing:.015em;color:var(--kemik);
+  text-shadow:0 4px 40px rgba(0,0,0,.6);
+}
+.hero-baslik .kalp{color:var(--pembe)}
+.hero-alt{
+  font-family:var(--govde);font-weight:800;font-size:11px;letter-spacing:.3em;
+  color:var(--sis);margin-top:16px;
+}
+.hero-alt b{color:var(--pembe);font-weight:800}
+.hero-soz{
+  font-family:var(--elyazi);font-size:clamp(24px,4.5vw,36px);color:var(--pembe);
+  margin-top:14px;transform:rotate(-1.2deg);text-shadow:0 2px 18px rgba(255,94,126,.25);
+}
+.hero-cta{
+  display:inline-block;margin-top:30px;text-decoration:none;
+  font-family:var(--govde);font-weight:800;font-size:12px;letter-spacing:.3em;
+  color:var(--gece);background:var(--pembe);padding:16px 26px;
+}
+.hero-cta:hover{background:#ff7a95}
+
+/* ---------- figürler ---------- */
+.figur{margin:44px 0 0;border:1px solid var(--cizgi);background:#000}
+.figur img{width:100%;display:block;filter:saturate(.95) contrast(1.04) brightness(.9)}
+.figur figcaption{
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-family:var(--govde);font-weight:600;font-size:10px;letter-spacing:.24em;color:var(--sis);
+  padding:11px 14px;border-top:1px solid var(--cizgi);
+}
+.figur figcaption .p{color:var(--pembe)}
+
+/* ---------- dilek söğüdü ---------- */
+.dilek-kutu{
+  border:1px dashed var(--sogut);padding:36px 26px;margin:44px 0 0;text-align:center;
+  background:rgba(125,155,116,.05);
+}
+.dilek-kutu .uyari{font-family:var(--govde);font-weight:800;font-size:10px;letter-spacing:.3em;color:var(--sogut);margin-bottom:22px}
+.dal{
+  width:min(340px,80%);height:16px;margin:0 auto;position:relative;
+}
+.dal i{
+  position:absolute;top:0;height:14px;width:52%;
+  background:linear-gradient(90deg,#5d4a33,#7a6244);
+  border-radius:8px;transition:transform .7s cubic-bezier(.3,1.6,.5,1);
+}
+.dal i.sol{left:0;transform-origin:right center;border-radius:8px 4px 4px 8px}
+.dal i.sag{right:0;transform-origin:left center;border-radius:4px 8px 8px 4px}
+.dal.kirik i.sol{transform:rotate(-24deg) translateX(-8px)}
+.dal.kirik i.sag{transform:rotate(22deg) translateX(8px)}
+.dal::after{
+  content:"";position:absolute;left:50%;top:-5px;width:2px;height:24px;margin-left:-1px;
+  background:var(--pembe);opacity:0;transition:opacity .4s .4s;
+}
+.dal.kirik::after{opacity:.8}
+.dilek-btn{
+  margin-top:30px;font-family:var(--govde);font-weight:800;font-size:12px;letter-spacing:.28em;
+  background:none;border:1.5px solid var(--pembe);color:var(--pembe);
+  padding:15px 26px;cursor:pointer;
+}
+.dilek-btn:hover{background:var(--pembe);color:var(--gece)}
+.dilek-sonuc{
+  margin-top:26px;font-family:var(--elyazi);font-size:clamp(26px,5vw,40px);
+  color:var(--pembe);min-height:1.2em;transform:rotate(-1deg);
+  opacity:0;transition:opacity .8s;
+}
+.dilek-sonuc.gorunur{opacity:1}
+
+/* ---------- telefon / mesajlar ---------- */
+.telefon{
+  max-width:420px;margin:44px auto 0;border:1px solid var(--cizgi);
+  background:#0f130f;border-radius:22px;overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+}
+.tel-bas{
+  display:flex;align-items:center;gap:12px;padding:14px 16px;
+  background:var(--panel);border-bottom:1px solid var(--cizgi);
+}
+.tel-bas .avatar{
+  width:38px;height:38px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 35% 30%,#ff8ba1,var(--pembe-koyu));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:17px;
+}
+.tel-bas .kim{line-height:1.3}
+.tel-bas .kim b{font-weight:800;font-size:15px}
+.tel-bas .kim span{display:block;font-size:11px;color:var(--sogut)}
+.tel-bas .kim span i{font-style:normal;color:var(--pembe)}
+.tel-govde{padding:18px 14px;min-height:300px;display:flex;flex-direction:column;gap:10px}
+.balon{
+  max-width:82%;padding:10px 14px;border-radius:16px;
+  font-size:14.5px;line-height:1.5;position:relative;
+  animation:balonGel .35s ease both;
+}
+@keyframes balonGel{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+.balon.o{align-self:flex-start;background:#1d241d;color:var(--kemik);border-bottom-left-radius:4px}
+.balon.o em{font-style:normal;color:var(--pembe)}
+.balon.sen{
+  align-self:flex-end;background:var(--pembe-koyu);color:#fff;border-bottom-right-radius:4px;
+}
+.balon .meta{display:block;font-size:9px;letter-spacing:.14em;color:var(--sis);margin-top:5px;font-weight:600}
+.balon.sen .meta{color:rgba(255,255,255,.65)}
+.yaziyor{
+  align-self:flex-start;background:#1d241d;border-radius:16px;border-bottom-left-radius:4px;
+  padding:12px 16px;display:none;
+}
+.yaziyor.on{display:block}
+.yaziyor i{
+  display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--sis);
+  margin:0 2px;animation:zipla 1.2s infinite;
+}
+.yaziyor i:nth-child(2){animation-delay:.15s}
+.yaziyor i:nth-child(3){animation-delay:.3s}
+@keyframes zipla{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+.tel-input{
+  display:flex;gap:10px;padding:12px 14px;border-top:1px solid var(--cizgi);background:var(--panel);
+}
+.tel-input input{
+  flex:1;background:#0c100c;border:1px solid var(--cizgi);border-radius:999px;
+  padding:10px 16px;color:var(--sis);font-family:var(--govde);font-size:13px;
+}
+.tel-input input::placeholder{color:#5c655c}
+.tel-not{
+  text-align:center;font-size:10px;letter-spacing:.2em;font-weight:600;color:var(--sis);
+  padding:0 14px 14px;background:var(--panel);
+}
+.tel-not b{color:var(--pembe)}
+
+/* ---------- kırmızı bayraklar ---------- */
+.bayraklar{list-style:none;margin:36px 0 0;display:grid;gap:12px;max-width:560px}
+.bayraklar li{
+  display:flex;align-items:center;gap:14px;
+  border:1px solid var(--cizgi);background:var(--panel);padding:14px 18px;
+  font-size:15px;color:#c3bfb2;
+}
+.bayraklar .kutu{
+  width:24px;height:24px;flex:none;border:1.5px solid var(--sis);border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  color:transparent;font-size:15px;transition:all .4s;
+}
+.bayraklar li.tik .kutu{border-color:var(--pembe);background:rgba(255,94,126,.12);color:var(--pembe)}
+.bayraklar li.tik{border-color:rgba(255,94,126,.4)}
+.bayrak-sonuc{
+  margin-top:18px;font-family:var(--elyazi);font-size:26px;color:var(--pembe);
+  opacity:0;transition:opacity .8s;transform:rotate(-.8deg);
+}
+.bayrak-sonuc.gorunur{opacity:1}
+
+/* ---------- kadro ---------- */
+.kadro{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:40px 0 0}
+.kart{background:var(--panel);border:1px solid var(--cizgi);position:relative}
+.kart .k-img{aspect-ratio:16/11;overflow:hidden;position:relative;background:#000}
+.kart .k-img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.95) brightness(.92)}
+.kart .k-img .yuz2{position:absolute;inset:0;opacity:0;transition:opacity .35s}
+.kart:hover .k-img .yuz2,.kart:focus-within .k-img .yuz2{opacity:1}
+.kart .k-ic{padding:16px 18px 18px}
+.kart h3{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.03em}
+.kart .oyuncu{font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--sogut);margin:3px 0 10px}
+.kart p{font-size:13.5px;line-height:1.6;color:#a8a496;margin:0;max-width:none}
+.kart .ipucu{
+  position:absolute;top:10px;right:10px;z-index:2;
+  font-size:9px;font-weight:800;letter-spacing:.18em;color:var(--pembe);
+  background:rgba(12,15,12,.75);padding:4px 8px;
+}
+
+/* ---------- künye ---------- */
+.kunye{border:1px solid var(--cizgi);margin:40px 0 0}
+.kunye .k-row{display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid var(--cizgi)}
+.kunye .k-row:last-child{border-bottom:none}
+.kunye .k-k{
+  font-weight:800;font-size:10px;letter-spacing:.26em;color:var(--sogut);
+  padding:14px 16px;border-right:1px solid var(--cizgi);align-self:center;
+}
+.kunye .k-v{padding:14px 16px;font-size:14.5px;color:#c3bfb2}
+.kunye .k-v b{color:var(--kemik)}
+.kunye .k-v .p{color:var(--pembe);font-weight:600}
+@media (max-width:640px){
+  .kunye .k-row{grid-template-columns:1fr}
+  .kunye .k-k{border-right:none;padding-bottom:0}
+}
+
+footer{
+  text-align:center;padding:80px 24px 130px;
+  font-weight:600;font-size:10px;letter-spacing:.26em;color:var(--sis);line-height:2.6;
+}
+footer .son{
+  display:block;font-family:var(--elyazi);font-size:34px;letter-spacing:0;
+  color:var(--pembe);margin-bottom:18px;transform:rotate(-1deg);
+}
+
+/* ---------- karanlık oda ---------- */
+.karanlik{
+  position:relative;margin:44px 0 0;aspect-ratio:16/9;background:#040504;
+  border:1px solid var(--cizgi);overflow:hidden;cursor:crosshair;
+  --fx:-300px;--fy:-300px;
+}
+.karanlik .saklanan{
+  position:absolute;right:5%;top:10%;width:46%;display:block;
+  filter:brightness(.8) saturate(.85);
+}
+.karanlik .k-not{
+  position:absolute;font-family:var(--elyazi);color:#cfc9b8;font-size:clamp(15px,2.6vw,24px);
+  transform:rotate(-2deg);white-space:nowrap;
+}
+.karanlik .ortu{
+  position:absolute;inset:0;transition:opacity .08s;
+  background:radial-gradient(circle 150px at var(--fx) var(--fy),
+    rgba(4,5,4,0) 0, rgba(4,5,4,.2) 70px, rgba(4,5,4,.997) 150px);
+}
+.karanlik.flas .ortu{opacity:0}
+html.flat .karanlik .ortu{opacity:.25}
+.karanlik-hint{
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-weight:600;font-size:10px;letter-spacing:.24em;color:var(--sis);
+  padding:11px 2px 0;
+}
+
+/* ---------- mesafe sayacı ---------- */
+#mesafe{
+  position:fixed;left:18px;bottom:16px;z-index:60;
+  font-weight:800;font-size:11px;letter-spacing:.22em;
+  background:rgba(6,8,6,.9);border:1px solid var(--pembe-koyu);color:var(--sis);
+  padding:10px 14px;display:none;
+}
+#mesafe.on{display:block}
+#mesafe b{color:var(--pembe);font-weight:800}
+@keyframes mesafeTik{0%,100%{border-color:var(--pembe-koyu)}50%{border-color:var(--pembe)}}
+#mesafe.on{animation:mesafeTik 2.4s infinite}
+
+/* kapı vuruşu karartması */
+#vinyet{
+  position:fixed;inset:0;pointer-events:none;z-index:110;opacity:0;
+  background:radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,.92));
+}
+@keyframes vur{0%{opacity:0}12%{opacity:.8}100%{opacity:0}}
+#vinyet.vur{animation:vur 1.5s ease-out}
+
+/* ---------- kaçan geri al butonu ---------- */
+.geri-al{
+  display:none;margin-top:16px;font-family:var(--govde);font-weight:800;
+  font-size:11px;letter-spacing:.26em;background:none;
+  border:1.5px dashed var(--sis);color:var(--sis);padding:12px 20px;cursor:pointer;
+  transition:transform .16s ease;position:relative;
+}
+.geri-al.gorunur{display:inline-block}
+.geri-al:hover{color:var(--kemik);border-color:var(--kemik)}
+
+/* ---------- gelen arama ---------- */
+#cagri{
+  position:fixed;inset:0;z-index:120;display:none;
+  align-items:center;justify-content:center;background:rgba(6,8,6,.92);
+}
+#cagri.on{display:flex}
+.cagri-kart{text-align:center;padding:24px}
+.cagri-avatar{
+  width:112px;height:112px;border-radius:50%;margin:0 auto 24px;position:relative;
+  background:radial-gradient(circle at 35% 30%,#ff8ba1,var(--pembe-koyu));
+  display:flex;align-items:center;justify-content:center;font-size:46px;color:#fff;
+}
+.cagri-avatar::before,.cagri-avatar::after{
+  content:"";position:absolute;inset:-4px;border-radius:50%;
+  border:2px solid var(--pembe);opacity:0;
+  animation:halka 2.2s ease-out infinite;
+}
+.cagri-avatar::after{animation-delay:1.1s}
+@keyframes halka{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.9);opacity:0}}
+.cagri-kim{font-weight:800;font-size:26px;color:var(--kemik)}
+.cagri-durum{font-weight:600;font-size:12px;letter-spacing:.3em;color:var(--sis);margin-top:8px}
+.cagri-durum i{font-style:normal;animation:blinkc 1.4s infinite}
+@keyframes blinkc{50%{opacity:.3}}
+.cagri-btnlar{display:flex;gap:34px;justify-content:center;margin-top:40px}
+.c-btn{
+  width:76px;height:76px;border-radius:50%;border:none;cursor:pointer;
+  font-size:30px;display:flex;align-items:center;justify-content:center;
+}
+.c-btn.ac{background:#2f9e57}
+.c-btn.red{background:#c23540}
+.c-btn:hover{filter:brightness(1.15)}
+.c-etiket{font-size:10px;font-weight:800;letter-spacing:.22em;color:var(--sis);margin-top:10px}
+
+/* sistem balonu (cevapsız çağrı) */
+.balon.sistem{
+  align-self:center;background:none;border:1px dashed var(--cizgi);
+  color:var(--sis);font-size:11.5px;letter-spacing:.08em;border-radius:10px;
+}
+
+/* ---------- yüzen kalpler ---------- */
+.ykalp{
+  position:fixed;bottom:-30px;z-index:30;pointer-events:none;
+  color:var(--pembe);font-size:18px;opacity:.7;
+  animation:yuksel 9s linear forwards;
+}
+@keyframes yuksel{
+  to{transform:translateY(-110vh) rotate(24deg);opacity:0}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .balon{animation:none}
+  .yaziyor i{animation:none}
+  .ykalp{display:none}
+  .dal i{transition:none}
+}
+html.flat .rv{opacity:1;transform:none;transition:none}
+html.flat .balon{animation:none}
+html.flat #giris{min-height:0;padding-top:180px}
+html.flat .hero-bg img{height:auto;min-height:100%}
+</style>
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+
+<!-- ================= GİRİŞ ================= -->
+<header id="giris">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="img/hero.jpg" alt="" onerror="this.parentNode.remove()">
+  </div>
+  <div class="hero-ic">
+    <div class="eyebrow rv in">CURRY BARKER FİLMİ — 2026 • TÜRKÇE ADIYLA: SAPLANTI</div>
+    <h1 class="hero-baslik rv in">OBSESSI<span class="kalp">♥</span>N</h1>
+    <div class="hero-alt rv in">KORKU / GERİLİM • 1 SA 49 DK • <b>R</b> • FOCUS FEATURES</div>
+    <div class="hero-soz rv in">dikkatli dile. kabul olabilir.</div>
+    <a class="hero-cta rv in" href="#dilek">BİR DİLEK TUT ↓</a>
+  </div>
+</header>
+
+<!-- mesafe + kapı karartması -->
+<div id="mesafe" aria-live="polite">♥ NIKKI: <b id="mesafeV">2.4 KM</b></div>
+<div id="vinyet" aria-hidden="true"></div>
+
+<!-- gelen arama -->
+<div id="cagri" role="alertdialog" aria-label="Gelen arama">
+  <div class="cagri-kart">
+    <div class="cagri-avatar">♥</div>
+    <div class="cagri-kim">Nikki ♥</div>
+    <div class="cagri-durum" id="cagriDurum">ARIYOR<i>…</i></div>
+    <div class="cagri-btnlar">
+      <div>
+        <button class="c-btn red" id="btnRed" aria-label="Reddet">✕</button>
+        <div class="c-etiket">REDDET</div>
+      </div>
+      <div>
+        <button class="c-btn ac" id="btnAc" aria-label="Aç">📞</button>
+        <div class="c-etiket">AÇ</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="icerik">
+
+    <!-- ================= KONU ================= -->
+    <section class="bolum">
+      <div class="eyebrow rv">KONU — SPOILER'SIZ</div>
+      <h2 class="bolum-baslik rv">UMUTSUZ BİR ROMANTİK, <em>TEK BİR DİLEK</em></h2>
+      <p class="rv"><strong>Bear</strong>, platonik aşkı <strong>Nikki</strong>'nin bir gün onu
+      fark etmesini bekleyen, sessiz, iyi kalpli bir çocuk. Sonra eline tuhaf bir şey geçiyor:
+      <em>"Tek Dilek Söğüdü"</em> — kır, dile, kabul olsun. Bear da tam olarak bunu yapıyor.</p>
+      <p class="rv">Ve dileği kabul oluyor. Hem de <strong>harfiyen</strong>.
+      Nikki artık onu seviyor — ama "seviyor" kelimesinin sözlükteki değil,
+      kâbuslardaki anlamıyla. Film, romantik komedinin bütün sahnelerini
+      (ilk mesaj, tanışma yemeği, eve bırakma) tek tek alıp korku filmine çeviriyor;
+      "keşke o da beni sevse" cümlesinin altında yatan sahiplenme arzusunu
+      seyircinin yüzüne tutuyor.</p>
+      <figure class="figur rv">
+        <img src="img/gece.jpg" alt="Gece, evin önünde arabanın yanında hareketsiz duran bir silüet" loading="lazy" onerror="this.parentNode.remove()">
+        <figcaption><span>03:14 — DIŞARISI</span><span class="p">ARABANIN YANINDA. YİNE.</span></figcaption>
+      </figure>
+    </section>
+
+    <!-- ================= DİLEK ================= -->
+    <section class="bolum" id="dilek">
+      <div class="eyebrow rv">İNTERAKTİF — KENDİ RİSKİNLE</div>
+      <h2 class="bolum-baslik rv">TEK DİLEK <em>SÖĞÜDÜ</em></h2>
+      <p class="rv">Efsane basit: söğüt dalını lades kemiği gibi ikiye kır,
+      kırılırken dileğini geçir içinden. Geri alma prosedürü yok.
+      İade kabul edilmez. Küçük yazıyı kimse okumaz.</p>
+      <figure class="figur rv">
+        <img src="img/sogut.jpg" alt="Tek Dilek Söğüdü'nün eski usul karton kutusu, iki elin arasında" loading="lazy" onerror="this.parentNode.remove()">
+        <figcaption><span>"ONE WISH WILLOW" — ORİJİNAL KUTUSUNDA</span><span>SON KULLANMA TARİHİ: OKUNMUYOR</span></figcaption>
+      </figure>
+      <div class="dilek-kutu rv">
+        <div class="uyari">AŞAĞIDAKİ DAL GERÇEK BİR SÖĞÜT DEĞİLDİR. MUHTEMELEN.</div>
+        <div class="dal" id="dal"><i class="sol"></i><i class="sag"></i></div>
+        <button class="dilek-btn" id="btnDilek">KIR VE DİLE ♥</button>
+        <br>
+        <button class="geri-al" id="btnGeriAl">DİLEĞİ GERİ AL</button>
+        <div class="dilek-sonuc" id="dilekSonuc" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ================= MESAJLAR ================= -->
+    <section class="bolum">
+      <div class="eyebrow rv">İMZA SAHNE — TELEFONUNU AÇMA</div>
+      <h2 class="bolum-baslik rv">NIKKI <em>YAZIYOR…</em></h2>
+      <p class="rv">Filmin en iyi korku aleti bir çığlık değil: <strong>bildirim sesi</strong>.
+      Aşağıdaki telefon sana ait. Mesajlar gerçek zamanlı düşüyor —
+      sen bu sayfada kaldıkça gelmeye devam edecekler. Dilek tutarsan… daha sık gelirler.</p>
+
+      <div class="telefon rv" aria-label="Nikki'den gelen mesajlar">
+        <div class="tel-bas">
+          <div class="avatar">♥</div>
+          <div class="kim"><b>Nikki ♥</b><span>çevrimiçi • <i>seni izliyor</i></span></div>
+        </div>
+        <div class="tel-govde" id="telGovde">
+          <div class="yaziyor" id="yaziyor"><i></i><i></i><i></i></div>
+        </div>
+        <div class="tel-input">
+          <input type="text" placeholder="cevap yazamazsın" disabled aria-label="Yanıt kutusu, devre dışı">
+        </div>
+        <div class="tel-not">ENDİŞELENME — <b>SENİN ADINA O YAZIYOR ♥</b></div>
+      </div>
+    </section>
+
+    <!-- ================= KIRMIZI BAYRAKLAR ================= -->
+    <section class="bolum">
+      <div class="eyebrow rv">HİZMET İÇİ EĞİTİM</div>
+      <h2 class="bolum-baslik rv">KIRMIZI <em>BAYRAKLAR</em></h2>
+      <p class="rv">Film boyunca Bear'ın görmezden geldiği işaretler.
+      Liste kendi kendini işaretliyor — çünkü Nikki'ye göre hepsi
+      zaten "normal sevgili davranışı":</p>
+      <ul class="bayraklar rv" id="bayraklar">
+        <li><span class="kutu">♥</span>Mesajına saniyeler içinde döner. Hep. Saat kaç olursa olsun.</li>
+        <li><span class="kutu">♥</span>Nerede olduğunu sormaz — çünkü zaten bilir.</li>
+        <li><span class="kutu">♥</span>Arkadaşlarını "aramıza giriyorlar" diye tanımlar.</li>
+        <li><span class="kutu">♥</span>Senin adına kararlar alır. Bazen senin adına konuşur da.</li>
+        <li><span class="kutu">♥</span>"Bunu senin için yaptım" cümlesini korkutucu bağlamlarda kurar.</li>
+      </ul>
+      <div class="bayrak-sonuc" id="bayrakSonuc">5/5 — tebrikler, biri sana saplantılı ♥</div>
+    </section>
+
+    <!-- ================= KARANLIK ODA ================= -->
+    <section class="bolum">
+      <div class="eyebrow rv">GERİLİM TESTİ — SES AÇMANA GEREK YOK</div>
+      <h2 class="bolum-baslik rv">KARANLIK <em>ODA</em></h2>
+      <p class="rv">Filmin en iyi sahneleri karanlıkta geçiyor: Bear bir şey duyuyor,
+      feneri kaldırıyor ve ışığın gösterdiği kadarını görüyoruz.
+      Aynısı aşağıda. İmlecin fener. Odada yalnız olmayabilirsin.</p>
+      <div class="karanlik rv" id="karanlikOda" aria-hidden="true">
+        <img class="saklanan" src="img/nikki2.jpg" alt="" onerror="this.remove()">
+        <span class="k-not" style="left:7%;top:66%">beni mi arıyorsun?</span>
+        <span class="k-not" style="left:26%;top:34%">sıcak… daha sıcak…</span>
+        <span class="k-not" style="left:12%;top:16%;color:var(--pembe)">♥</span>
+        <span class="k-not" style="left:44%;top:78%;color:var(--pembe)">♥ ♥</span>
+        <div class="ortu"></div>
+      </div>
+      <div class="karanlik-hint rv"><span>FENERİ GEZDİR</span><span>BİR ŞEY BULURSAN BİZE DEĞİL, ONA GÖRÜNÜRSÜN</span></div>
+    </section>
+
+    <!-- ================= KADRO ================= -->
+    <section class="bolum">
+      <div class="eyebrow rv">KADRO</div>
+      <h2 class="bolum-baslik rv">SEVEN, SEVİLEN, <em>KAÇAMAYAN</em></h2>
+      <div class="kadro">
+        <article class="kart rv">
+          <div class="k-img"><img src="img/bear.jpg" alt="Bear, yatakta dehşet içinde uyanıyor" loading="lazy" onerror="this.parentNode.style.background='#1d241d'"></div>
+          <div class="k-ic">
+            <h3>BEAR</h3>
+            <div class="oyuncu">MICHAEL JOHNSTON</div>
+            <p>Dileği tutan çocuk. "Keşke beni sevse"nin, kelimenin tam anlamıyla
+            kabul olduğu andan itibaren tek isteği: dileğini geri almak.</p>
+          </div>
+        </article>
+        <article class="kart rv" tabindex="0">
+          <span class="ipucu">KARTIN ÜZERİNE GEL ♥</span>
+          <div class="k-img">
+            <img src="img/nikki.jpg" alt="Nikki, tatlı bir gülümsemeyle" loading="lazy" onerror="this.parentNode.style.background='#1d241d'">
+            <img class="yuz2" src="img/nikki2.jpg" alt="Nikki'nin diğer yüzü" loading="lazy" onerror="this.remove()">
+          </div>
+          <div class="k-ic">
+            <h3>NIKKI</h3>
+            <div class="oyuncu">INDE NAVARRETTE</div>
+            <p>Dileğin kendisi. Gülümsemesi filmin en tatlı ve en korkunç
+            görüntüsü — hangisi olduğu sahneye göre değişir.</p>
+          </div>
+        </article>
+        <article class="kart rv">
+          <div class="k-img"><img src="img/grup.jpg" alt="Arkadaş grubu oyun masasında" loading="lazy" onerror="this.parentNode.style.background='#1d241d'"></div>
+          <div class="k-ic">
+            <h3>IAN &amp; SARAH</h3>
+            <div class="oyuncu">COOPER TOMLINSON • MEGAN LAWLESS</div>
+            <p>Bear'ın arkadaşları; yani Nikki'nin sözlüğündeki karşılığıyla,
+            "aradaki engeller". Bu tanımın nereye gittiğini tahmin edebilirsin.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= KÜNYE ================= -->
+    <section class="bolum">
+      <div class="eyebrow rv">KÜNYE</div>
+      <h2 class="bolum-baslik rv">KAYIT <em>&amp; KARAR</em></h2>
+      <div class="kunye rv">
+        <div class="k-row"><div class="k-k">YÖNETMEN / SENARİST</div><div class="k-v"><b>Curry Barker</b> — internet fenomeni "Milk &amp; Serial"ın yaratıcısı, ilk büyük stüdyo filmiyle</div></div>
+        <div class="k-row"><div class="k-k">STÜDYO / VİZYON</div><div class="k-v"><b>Focus Features</b> — ABD vizyonu <b>15 Mayıs 2026</b></div></div>
+        <div class="k-row"><div class="k-k">TÜR / SÜRE</div><div class="k-v">Korku, Gerilim • <b>1 sa 49 dk</b> • R (17 yaş altına tavsiye edilmez)</div></div>
+        <div class="k-row"><div class="k-k">KADRO</div><div class="k-v">Michael Johnston, Inde Navarrette, Cooper Tomlinson, Megan Lawless ve <b>Andy Richter</b> (Carter)</div></div>
+        <div class="k-row"><div class="k-k">GİŞE</div><div class="k-v"><span class="p">224 milyon doları aşan hasılatla</span> Focus Features tarihinin en çok kazanan filmi oldu</div></div>
+        <div class="k-row"><div class="k-k">NEDEN İZLEMELİ</div><div class="k-v">"Sevilmek istiyorum"un bir korku filmi öncülü olabileceğini kanıtlayan, komik, rahatsız ve şaşırtıcı derecede zeki bir ilk film. Romantik komedi kaslarınla korku refleksini aynı sahnede çalıştırıyor.</div></div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <span class="son">dileğinden dönemezsin ♥</span>
+    BU SAYFA RESMÎ DEĞİLDİR — BİR HAYRAN TASARIMIDIR<br>
+    FOTOĞRAFLAR: OBSESSION © FOCUS FEATURES (TMDB ÜZERİNDEN)<br>
+    BU SAYFADAN AYRILDIĞINI NIKKI'YE BİZ SÖYLEMEYİZ. O ZATEN BİLİR.
+  </footer>
+</main>
+
+<script>
+(function(){
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var flat=location.hash==='#flat';
+  if(flat) document.documentElement.classList.add('flat');
+
+  /* ---- reveal ---- */
+  var rvEls=[].slice.call(document.querySelectorAll('.rv'));
+  function reveal(){
+    var vh=window.innerHeight;
+    rvEls=rvEls.filter(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.top<vh*0.92 && r.bottom>0){el.classList.add('in');return false;}
+      return true;
+    });
+  }
+  window.addEventListener('scroll',reveal,{passive:true});
+  window.addEventListener('load',reveal);
+  window.addEventListener('resize',reveal);
+  reveal();
+
+  /* ---- mesaj motoru ---- */
+  var govde=document.getElementById('telGovde'), yaziyor=document.getElementById('yaziyor');
+  var dilekli=false, sira=0, zamanlayici=null;
+  var tatli=[
+    {k:'o',m:'selam :) sayfamı mı okuyorsun? gördüm ♥'},
+    {k:'o',m:'profiline baktım bu arada. 2019 fotoğrafların çok tatlı'},
+    {k:'o',m:'neden cevap yazmıyorsun? çevrimiçisin, <em>görüyorum</em>'},
+    {k:'o',m:'sorun değil, beklerim ♥ ben sabırlıyım. ÇOK sabırlıyım'}
+  ];
+  var azgin=[
+    {k:'o',m:'dileğini DUYDUM ♥♥♥ artık resmiyiz'},
+    {k:'sen',m:'ben de seni seviyorum nikki',meta:'SEN (YAZMADIN)'},
+    {k:'o',m:'gördün mü, ne güzel anlaşıyoruz'},
+    {k:'o',m:'arkadaşların vardı ya… <em>hallettim</em> ♥'},
+    {k:'o',m:'kapıdayım desem güler misin? …penceredeyim.'},
+    {k:'o',m:'seni seviyorum seni seviyorum seni seviyorum seni sev'}
+  ];
+  function balonEkle(msg){
+    var b=document.createElement('div');
+    b.className='balon '+msg.k;
+    b.innerHTML=msg.m+'<span class="meta">'+(msg.meta||'İLETİLDİ ✓✓ GÖRÜLDÜ')+'</span>';
+    govde.insertBefore(b,yaziyor);
+    govde.scrollTop=govde.scrollHeight;
+  }
+  function siradaki(){
+    var liste=dilekli?azgin:tatli;
+    if(sira>=liste.length){
+      if(dilekli){ balonEkle({k:'o',m:'♥♥♥♥♥♥♥'}); zamanlayici=setTimeout(siradaki,25000); }
+      return;
+    }
+    yaziyor.classList.add('on');
+    zamanlayici=setTimeout(function(){
+      yaziyor.classList.remove('on');
+      balonEkle(liste[sira++]);
+      zamanlayici=setTimeout(siradaki, dilekli?4200:8000);
+    }, reduced?200:1400);
+  }
+  if(flat){
+    tatli.forEach(balonEkle);
+    balonEkle(azgin[0]); balonEkle(azgin[1]); balonEkle(azgin[4]);
+  } else {
+    zamanlayici=setTimeout(siradaki,4000);
+  }
+
+  /* ---- dilek kırma ---- */
+  var dal=document.getElementById('dal'), btnDilek=document.getElementById('btnDilek'),
+      dilekSonuc=document.getElementById('dilekSonuc');
+  var kalpTimer=null;
+  function kalpUret(){
+    if(reduced) return;
+    var k=document.createElement('span');
+    k.className='ykalp';k.textContent='♥';
+    k.style.left=(8+Math.random()*84)+'vw';
+    k.style.fontSize=(13+Math.random()*14)+'px';
+    document.body.appendChild(k);
+    setTimeout(function(){k.remove();},9500);
+  }
+  function dilekTut(){
+    if(dilekli) return;
+    dilekli=true;
+    dal.classList.add('kirik');
+    dilekSonuc.textContent='dileğin kabul edildi ♥ geri alamazsın.';
+    dilekSonuc.classList.add('gorunur');
+    btnDilek.textContent='KIRILDI — ARTIK ONUN ♥';
+    btnDilek.disabled=true;
+    sira=0;
+    clearTimeout(zamanlayici);
+    if(!flat) siradaki();
+    if(!reduced && !flat){ kalpUret(); kalpTimer=setInterval(kalpUret,5000); }
+  }
+  btnDilek.addEventListener('click',dilekTut);
+  if(flat){ dal.classList.add('kirik'); dilekSonuc.textContent='dileğin kabul edildi ♥ geri alamazsın.'; dilekSonuc.classList.add('gorunur'); btnDilek.textContent='KIRILDI — ARTIK ONUN ♥'; }
+
+  /* ---- kırmızı bayraklar: kendi kendini işaretler ---- */
+  var bayraklar=[].slice.call(document.querySelectorAll('#bayraklar li'));
+  var bayrakSonuc=document.getElementById('bayrakSonuc');
+  var bayrakBasladi=false;
+  function bayrakKontrol(){
+    if(bayrakBasladi) return;
+    var kutu=document.getElementById('bayraklar').getBoundingClientRect();
+    if(kutu.top<window.innerHeight*0.8){
+      bayrakBasladi=true;
+      bayraklar.forEach(function(li,i){
+        setTimeout(function(){
+          li.classList.add('tik');
+          if(i===bayraklar.length-1) bayrakSonuc.classList.add('gorunur');
+        }, reduced?0:(i+1)*1600);
+      });
+    }
+  }
+  window.addEventListener('scroll',bayrakKontrol,{passive:true});
+  bayrakKontrol();
+  if(flat){ bayraklar.forEach(function(li){li.classList.add('tik');}); bayrakSonuc.classList.add('gorunur'); }
+
+  /* ---- kaçan "geri al" butonu ---- */
+  var btnGeriAl=document.getElementById('btnGeriAl'), kacis=0, yakalandi=false;
+  function gerialGoster(){ btnGeriAl.classList.add('gorunur'); }
+  function kac(){
+    if(yakalandi||reduced) return;
+    kacis++;
+    if(kacis>6){ yakalandi=true; btnGeriAl.style.transform=''; return; }
+    var x=(Math.random()*220-110), y=(Math.random()*70-20);
+    btnGeriAl.style.transform='translate('+x.toFixed(0)+'px,'+y.toFixed(0)+'px)';
+  }
+  btnGeriAl.addEventListener('pointerenter',kac);
+  btnGeriAl.addEventListener('touchstart',function(){ kac(); },{passive:true});
+  btnGeriAl.addEventListener('click',function(){
+    if(!yakalandi && !reduced && kacis<=6) return;
+    btnGeriAl.textContent='OLMAZ ♥';
+    btnGeriAl.disabled=true;
+    if(dilekli) balonEkle({k:'o',m:'geri almaya çalıştığını gördüm. <em>tatlısın</em> ♥'});
+  });
+
+  /* ---- gelen arama ---- */
+  var cagri=document.getElementById('cagri'), cagriDurum=document.getElementById('cagriDurum');
+  var cagriOldu=false, actx=null;
+  function nefes(sure){
+    try{
+      actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+      var buf=actx.createBuffer(1,actx.sampleRate*2,actx.sampleRate);
+      var d=buf.getChannelData(0);
+      for(var i=0;i<d.length;i++){ d[i]=Math.random()*2-1; }
+      var src=actx.createBufferSource(); src.buffer=buf; src.loop=true;
+      var flt=actx.createBiquadFilter(); flt.type='bandpass'; flt.frequency.value=420; flt.Q.value=.8;
+      var g=actx.createGain(); g.gain.value=0;
+      var lfo=actx.createOscillator(); lfo.frequency.value=0.42;
+      var lfoG=actx.createGain(); lfoG.gain.value=.05;
+      lfo.connect(lfoG); lfoG.connect(g.gain);
+      g.gain.setValueAtTime(.055,actx.currentTime);
+      src.connect(flt); flt.connect(g); g.connect(actx.destination);
+      src.start(); lfo.start();
+      setTimeout(function(){ try{src.stop();lfo.stop();}catch(e){} }, sure);
+    }catch(e){}
+  }
+  function cagriAc(){
+    if(cagriOldu) return; cagriOldu=true;
+    cagri.classList.add('on');
+    document.getElementById('btnRed').focus();
+  }
+  function cagriKapat(){ cagri.classList.remove('on'); }
+  document.getElementById('btnRed').addEventListener('click',function(){
+    cagriKapat();
+    balonEkle({k:'sistem',m:'✕ cevapsız çağrı (47) — nikki ♥',meta:'AZ ÖNCE'});
+    balonEkle({k:'o',m:'reddettin. sorun değil. <em>46 kez daha ararım</em> ♥'});
+  });
+  document.getElementById('btnAc').addEventListener('click',function(){
+    cagriDurum.innerHTML='BAĞLANDI<i>…</i>';
+    if(!reduced) nefes(3600);
+    setTimeout(function(){
+      cagriKapat();
+      cagriDurum.innerHTML='ARIYOR<i>…</i>';
+      balonEkle({k:'o',m:'sesini duymak güzeldi ♥ yarın görüşürüz'});
+    }, reduced?600:3800);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && cagri.classList.contains('on')){
+      cagriKapat();
+      balonEkle({k:'sistem',m:'✕ cevapsız çağrı (47) — nikki ♥',meta:'AZ ÖNCE'});
+    }
+  });
+
+  /* dilek sonrası: geri al butonu + arama zamanlayıcısı */
+  var eskiDilekTut=dilekTut;
+  btnDilek.removeEventListener('click',dilekTut);
+  function dilekTutArtik(){
+    eskiDilekTut();
+    gerialGoster();
+    if(!flat){ setTimeout(cagriAc, 20000); yaklas(); }
+  }
+  btnDilek.addEventListener('click',dilekTutArtik);
+  if(flat){ gerialGoster(); }
+  if(location.hash==='#cagri'){ document.documentElement.classList.add('flat'); cagriAc(); }
+
+  /* ---- karanlık oda ---- */
+  var koda=document.getElementById('karanlikOda');
+  if(koda){
+    var yuz=koda.querySelector('.saklanan'), bulunduK=false;
+    function fener(e){
+      var r=koda.getBoundingClientRect();
+      var x=e.clientX-r.left, y=e.clientY-r.top;
+      koda.style.setProperty('--fx',x+'px');
+      koda.style.setProperty('--fy',y+'px');
+      if(!bulunduK && yuz){
+        var fr=yuz.getBoundingClientRect();
+        var cx=fr.left-r.left+fr.width/2, cy=fr.top-r.top+fr.height/2;
+        if(Math.hypot(x-cx,y-cy) < Math.max(fr.width,fr.height)*0.4){
+          bulunduK=true;
+          [0,260].forEach(function(t){
+            setTimeout(function(){koda.classList.add('flas');},t);
+            setTimeout(function(){koda.classList.remove('flas');},t+160);
+          });
+          setTimeout(function(){
+            balonEkle({k:'o',m:'beni <em>buldun</em> ♥ saklambaçta hep kötüydüm'});
+          },700);
+        }
+      }
+    }
+    koda.addEventListener('pointermove',fener);
+    koda.addEventListener('pointerdown',fener);
+    koda.addEventListener('pointerleave',function(){
+      koda.style.setProperty('--fx','-300px');
+      koda.style.setProperty('--fy','-300px');
+    });
+  }
+
+  /* ---- mesafe sayacı: nikki yaklaşıyor ---- */
+  var mesafe=document.getElementById('mesafe'), mesafeV=document.getElementById('mesafeV'),
+      vinyet=document.getElementById('vinyet');
+  function vur(){
+    if(reduced) return;
+    vinyet.classList.remove('vur'); void vinyet.offsetWidth;
+    vinyet.classList.add('vur');
+    try{
+      actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+      [0,0.42,0.84].forEach(function(t){
+        var o=actx.createOscillator(), g=actx.createGain();
+        o.type='triangle'; o.frequency.value=64;
+        g.gain.setValueAtTime(0.0001,actx.currentTime+t);
+        g.gain.exponentialRampToValueAtTime(0.35,actx.currentTime+t+0.015);
+        g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+t+0.22);
+        o.connect(g); g.connect(actx.destination);
+        o.start(actx.currentTime+t); o.stop(actx.currentTime+t+0.3);
+      });
+    }catch(e){}
+  }
+  function yaklas(){
+    mesafe.classList.add('on');
+    var duraklar=[
+      {t:'2.4 KM',d:14000},{t:'1.8 KM',d:15000},{t:'1.1 KM',d:13000},
+      {t:'700 M',d:12000},{t:'350 M',d:12000},{t:'120 M',d:11000},
+      {t:'SOKAĞINDA',d:13000},{t:'KAPIDA',d:0}
+    ];
+    var top=0;
+    duraklar.forEach(function(du){
+      setTimeout(function(){
+        mesafeV.textContent=du.t;
+        if(du.t==='KAPIDA'){
+          vur();
+          balonEkle({k:'o',m:'kapıyı çalmayacağım. anahtarım var, <em>unuttun mu?</em> ♥'});
+          setTimeout(function(){
+            mesafeV.textContent='İÇERİDE ♥';
+            balonEkle({k:'o',m:'arkana bakma. kitap okuyorum sadece ♥'});
+          },25000);
+        }
+      },top);
+      top+=du.d;
+    });
+  }
+  if(flat){ mesafe.classList.add('on'); mesafeV.textContent='350 M'; }
+
+  /* ---- sekme kaçış ---- */
+  var asil=document.title;
+  document.addEventListener('visibilitychange',function(){
+    document.title=document.hidden?'nikki: geri dön ♥':asil;
+  });
+})();
+</script>
+</body>
+</html>
